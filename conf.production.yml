@@ -1,0 +1,4 @@
+conf:
+  account: 111111111111
+  dynamodb_user: prod-lambdaauth-user
+  secret_key: "secret-key"
