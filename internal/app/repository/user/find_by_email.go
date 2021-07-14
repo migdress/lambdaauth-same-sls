@@ -3,7 +3,7 @@ package user
 import (
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/service/dynamodb"
-	"github.com/lambda-custom-authorizers/lambdaauth/internal/app/model"
+	"github.com/migdress/lambdaauthsamesls/internal/app/model"
 	"github.com/pkg/errors"
 )
 

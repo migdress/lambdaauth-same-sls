@@ -10,10 +10,10 @@ import (
 	"github.com/aws/aws-lambda-go/lambda"
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/dynamodb"
-	"github.com/lambda-custom-authorizers/lambdaauth/internal/apigateway"
-	"github.com/lambda-custom-authorizers/lambdaauth/internal/app/model"
-	"github.com/lambda-custom-authorizers/lambdaauth/internal/app/repository/user"
-	"github.com/lambda-custom-authorizers/lambdaauth/internal/passwordhasher"
+	"github.com/migdress/lambdaauthsamesls/internal/apigateway"
+	"github.com/migdress/lambdaauthsamesls/internal/app/model"
+	"github.com/migdress/lambdaauthsamesls/internal/app/repository/user"
+	"github.com/migdress/lambdaauthsamesls/internal/passwordhasher"
 	"github.com/pkg/errors"
 )
 

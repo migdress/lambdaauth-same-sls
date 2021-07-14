@@ -7,7 +7,7 @@ import (
 
 	"github.com/aws/aws-lambda-go/events"
 	"github.com/aws/aws-lambda-go/lambda"
-	"github.com/lambda-custom-authorizers/lambdaauth/internal/jwtwrapper"
+	"github.com/migdress/lambdaauthsamesls/internal/jwtwrapper"
 	"github.com/pkg/errors"
 )
 

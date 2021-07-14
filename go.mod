@@ -1,4 +1,4 @@
-module github.com/lambda-custom-authorizers/lambdaauth
+module github.com/migdress/lambdaauthsamesls
 
 go 1.14
 

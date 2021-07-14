@@ -37,6 +37,11 @@ build-all:
 	make build-register
 	make build-login
 
+.PHONY: remove-all
+remove-all: 
+	sls remove -v
+
+
 .PHONY: deploy-all
 deploy-all: build-all
 	sls deploy -v	
