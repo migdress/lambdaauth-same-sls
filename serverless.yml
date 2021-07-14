@@ -1,0 +1,58 @@
+service: lambdaauth
+
+frameworkVersion: '2'
+
+custom:
+    active: ${file(conf.${self:provider.stage}.yml):conf}
+
+provider:
+  name: aws
+  runtime: go1.x
+  region: us-east-1
+  stage: ${opt:stage, 'dev'}
+  environment: 
+    DYNAMODB_USER: ${self:custom.active.dynamodb_user}
+    SECRET_KEY: ${self:custom.active.secret_key}
+  iamRoleStatements:
+    - Effect: "Allow"
+      Action:
+        - dynamodb:Query
+        - dynamodb:PutItem
+      Resource:
+        - arn:aws:dynamodb:${self:provider.region}:${self:custom.active.account}:table/${self:custom.active.dynamodb_user}
+        - arn:aws:dynamodb:${self:provider.region}:${self:custom.active.account}:table/${self:custom.active.dynamodb_user}/index/*
+
+package:
+  exclude:
+    - ./**
+  include:
+    - ./bin/**
+
+functions:
+  protected-endpoint:
+    handler: bin/protected-endpoint
+    events:
+      - http:
+          path: /protected-endpoint
+          method: get
+          authorizer:
+            name: authorizer
+            resultTtlInSeconds: 0
+  authorizer:
+    handler: bin/authorizer
+    events:
+      - http:
+          path: /auth
+          method: get
+  register:
+    handler: bin/register
+    events:
+      - http:
+          path: /register
+          method: post
+  login:
+    handler: bin/login
+    events:
+      - http:
+          path: /login
+          method: post
